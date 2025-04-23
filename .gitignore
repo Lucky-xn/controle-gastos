@@ -1,0 +1,52 @@
+# Ignore geral do sistema
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+dist/
+.vite/
+
+# Vite cache
+.cache/
+.vitepress/cache/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Editor configs
+.vscode/
+.idea/
+
+# Mac/Linux
+*.swp
+*.swo
+
+# PHP
+backend/vendor/
+*.log
+
+# Banco SQLite, se usar
+*.sqlite
+*.sqlite3
+
+# Composer
+composer.lock
+
+# Arquivos temporários
+tmp/
+temp/
+
+# Git submodules, se tiver
+.gitmodules
+
+# Testes
+coverage/
+phpunit.xml
