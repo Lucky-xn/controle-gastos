@@ -2,7 +2,7 @@
 
 namespace App\Core;
 
-class Router
+class SystemRouter
 {
   private $routes = [];
   private $notFoundHandler;
@@ -56,6 +56,7 @@ class Router
       if ($route['method'] === $requestMethod && $params !== false) {
         $this->handlerProtectedRoute(route: $route, params: $params);
         $this->loadRouteHandler($route['handler']);
+        return;
       }
     }
 
@@ -87,7 +88,7 @@ class Router
   }
 
   private function loadRouteHandler(string $handler) {
-    $handlerPath = __DIR__ . '/../Http/Controlers' . $handler;
+    $handlerPath = __DIR__ . '/../Http/Controlers/' . $handler;
     if (file_exists(filename: $handlerPath)) {
       require $handlerPath;
     } else {

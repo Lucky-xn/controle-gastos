@@ -1,8 +1,8 @@
 <?php
 
-use App\Core\Router;
+use App\Core\SystemRouter;
 
-$router = new Router();
+$router = new SystemRouter();
 
 const BASE__ROUTES = __DIR__ . '/ChildsRoutes';
 
