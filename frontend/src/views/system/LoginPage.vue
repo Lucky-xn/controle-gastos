@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col pt-50 justify-center items-center">
     <form
+    @submit.prevent="Login"
       class="transition-all duration-300 flex flex-col items-center gap-5 w-full max-w-[25vw] bg-zinc-900 border-slate-600 hover:border-slate-700 border rounded-md p-3 pb-10"
     >
       <div class="flex flex-col items-center">
@@ -49,6 +50,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { userRequest } from '@/config/userRequest'
+
+const { makeRequest } = userRequest('', '');
 
 const password = ref(false)
 
@@ -59,4 +63,14 @@ const togglePassword = (password) => {
     return 'password'
   }
 }
+
+const login = async (e) => {
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData.entries(formData));
+
+  const response = await makeRequest({
+    data,
+  })
+}
+
 </script>
