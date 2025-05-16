@@ -9,7 +9,7 @@ export function userRequest(url, method = 'GET') {
     };
 
     if (token) {
-      headers['Authorization'] = `Barer ${token}`;
+      headers['Authorization'] = `Bearer ${token}`;
     }
 
     const response = await fetch(`${api}${url}`, {

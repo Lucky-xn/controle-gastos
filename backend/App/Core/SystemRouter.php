@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Services\System\Auth;
+
 class SystemRouter
 {
   private $routes = [];
@@ -71,7 +73,7 @@ class SystemRouter
   private function handlerProtectedRoute(array $route, array $params)
   {
     if ($route['protected']) {
-      $decoded = ''; #AuthMiddleware::verifyToken();
+      $decodedToken = (new Auth)->verifyToken($_SERVER['token']);
 
       if ($route['adminOnly'] ?? false) {
         #AdminMiddleware::checkAdmin($decodedToken);
@@ -105,43 +107,4 @@ class SystemRouter
       echo json_encode(['Menssage' => 'Endpoint não encontrado!']);
     }
   }
-
-  
-
-  // public function resolve()
-  // {
-  //   $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-  //   $method = $_SERVER['REQUEST_METHOD'];
-
-  //   foreach ($this->routes as $route) {
-  //     if ($route['endpoint'] === $uri && $route['method'] === $method) {
-  //       if (isset($route['permission']) && !$this->checkPermission($route['permission'])) {
-  //         http_response_code(404);
-  //         echo json_encode(['error' => 'Acesso Negado']);
-  //         return;
-  //       }
-
-  //       $handler = $route['handler'];
-  //       $handler();
-  //       return;
-  //     }
-  //   }
-
-  //   http_response_code(404);
-  //   echo json_encode(['error' => 'Rota Não Encontrada']);
-  // }
-
-  // private function checkPermission($requireRole)
-  // {
-  //   $headers = getallheaders();
-  //   $token = $headers['Autorization'] ?? '';
-  //   $token = str_replace('Bearer ', '', $token);
-
-  //   try {
-  //     $decoded = \Firebase\JWT\JWT::decode($token, new Firebase\JWT\Key($this->secret, 'HS256'));
-  //     return ($decoded->role ?? '') === $requireRole;
-  //   } catch (Exception $e) {
-  //     return false;
-  //   }
-  // }
 }

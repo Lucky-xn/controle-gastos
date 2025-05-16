@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core;
+namespace App\Services\System;
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -15,10 +15,16 @@ class Auth {
   }
 
   public function generateToken($data) {
-    return JWT::encode($data, $this->secretKey, $this->algorithm);
+    $payload = [
+      'id' => $data['id'],
+      'name' => $data['name'],
+      'exp' => time() + 3600,
+    ];
+
+    return json_encode(['token' => JWT::encode($payload, $this->secretKey, $this->algorithm)]);
   }
 
-  public function decodeToken($jwt) {
+  public function verifyToken($jwt) {
     return JWT::decode($jwt, new Key($this->secretKey, $this->algorithm));
   }
 }
