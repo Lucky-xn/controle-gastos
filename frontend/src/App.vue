@@ -1,10 +1,17 @@
 <template>
   <div>
-    <RouterView />
+    <NavBar v-if="route.path !== '/'"/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router'
+import { useRoute } from 'vue-router';
+
+import NavBar from '@/components/System/NavBar/NavBar.vue'
+
+const route = useRoute();
+
+console.log(route.path);
 
 </script>
