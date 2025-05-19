@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 
-import systemRoutes from './routes/systemRoutes'
+import systemRoutes from './routes/SystemRoutes'
 
 const routes = [
   ...systemRoutes,
