@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-[5rem_1fr] grid-rows-[5rem_1fr] h-screen">
+  <div class="grid grid-cols-[24rem_1fr] grid-rows-[4rem_1fr] h-screen">
     <header class="col-span-2 row-start-1 z-50">
       <NavBar/>
     </header>

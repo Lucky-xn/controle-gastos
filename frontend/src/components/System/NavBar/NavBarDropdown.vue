@@ -10,6 +10,7 @@
 				Perfil
 			</div>
 			<div
+				@click="changeURL('/Settings/Card')"
 				class="flex gap-1 font-medium items-center px-4 py-2 text-gray-700 cursor-pointer hover:bg-purple-50 border-b border-neutral-200 hover:text-purple-600 hover:rounded-md transition-colors duration-300"
 			>
 				<Icon icon="solar:settings-bold-duotone" class="h-5 w-5" />
@@ -32,6 +33,10 @@ import { Icon } from '@iconify/vue';
 import Dropdown from '../../Common/Dropdown.vue';
 
 const router = useRouter();
+
+function changeURL(value) {
+	router.push(`${value}`);
+}
 
 function logOut() {
 	localStorage.removeItem('token');

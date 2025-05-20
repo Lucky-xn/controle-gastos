@@ -1,6 +1,6 @@
 import LoginPage from "@/views/System/LoginPage.vue";
 import homePage from "@/views/System/homePage.vue";
-import Settings from "@/views/System/Settings.vue";
+import RegisterCard from "@/views/System/RegisterCard.vue";
 import SettingsLayout from "@/layouts/SettingsLayout.vue";
 
 export default [
@@ -24,14 +24,15 @@ export default [
     path: '/Settings',
     name: 'Configurações',
     component: SettingsLayout,
+    redirect: '/Settings/Card',
     meta: {
       requiresAuth: true,
     },
     children: [
       {
-        path: '/Settings/Card',
+        path: 'Card',
         name: 'Cartões',
-        component: Settings,
+        component: RegisterCard,
         meta: {
           requiresAuth: true,
         },

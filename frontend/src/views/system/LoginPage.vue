@@ -71,11 +71,8 @@ const enviarDados = async () => {
     password: password.value,
   });
 
-  console.log(response);
-
   if (!response.dados.success) throw new Error('Erro ao buscar user');
 
-  console.log('buscado com sucesso');
   localStorage.setItem('token', response.dados.token);
   router.push('/HomePage');
 };
